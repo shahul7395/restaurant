@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKS ALMADINA HOTEL</title>
+  <style>
+    body {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      position: fixed;
+    }
+
+    header {
+      background-color: #4b0303;
+      color: #fff;
+      text-align: center;
+      padding: 1em;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    #menu {
+      display: flex;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .dish {
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color:beige;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #4b0303;
+      color: #fff;
+      text-align: center;
+      padding: 1em;
+      position:fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>SKS ALMADINA HOTEL</h1>
+  </header>
+
+  <section id="menu">
+    <div class="dish" onclick="order('Parota', 40)">Parota - 40
+    <img src="./parota.jpg" alt="">
+    </div>
+    <div class="dish" onclick="order('Pushka', 60)">Pushka - 60
+    <img src="./pushka.jpg" alt="">
+    </div>
+    <div class="dish" onclick="order('Dosa', 30)">Dosa - 30
+    <img src="./dosa.jpg" alt="">
+    </div>
+    <div class="dish" onclick="order('Chicken half', 70)">Chicken half - 70 
+    <img src="./chicken.jpg" alt="">
+    </div>
+    <div class="dish" onclick="order('Chicken full', 150)">chicken full - 150
+    <img src="./chicken.jpg" alt="">
+    </div>
+  </section>
+
+  <section id="order-summary">
+    <h2>Your Order</h2>
+    <ul id="order-list"></ul>
+    <p>Total: <span id="total">0</span></p>
+  </section>
+
+  <footer>
+    &copy; 2024 SKS AL MADINA HOTEL
+    <div>Contact Us</div>
+       <div>Sk.Shajahan</div>
+        <div>9014290647</div>
+        <div>Kota reddy nagar,kandukur,523105</div> 
+
+</footer>
+
+  <script>
+    let orderList = [];
+    let totalAmount = 0;
+
+    function order(item, price) {
+      orderList.push(item);
+      totalAmount += price;
+
+      updateOrderSummary();
+    }
+
+    function updateOrderSummary() {
+      const orderListElement = document.getElementById('order-list');
+      const totalElement = document.getElementById('total');
+
+      orderListElement.innerHTML = '';
+      orderList.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = item;
+        orderListElement.appendChild(listItem);
+      });
+
+      totalElement.textContent = totalAmount;
+    }
+  </script>
+
+</body>
+</html>
